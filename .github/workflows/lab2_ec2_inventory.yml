@@ -1,0 +1,45 @@
+name: Lab2 – EC2 Inventory
+
+on:
+  push:
+    paths:
+      - "labs/lab2_ec2_inventory/**"
+      - ".github/workflows/lab2_ec2_inventory.yml"
+  schedule:
+    - cron: "0 6 * * *" # 06:00 UTC daily
+
+jobs:
+  ec2-inventory:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write   # allow OIDC federation to AWS
+      contents: read
+
+    env:
+      SCOPE_TAG: Scope=In
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"  # stable runtime
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::097089567108:role/ec2
+          aws-region: us-east-1
+
+      - name: Run EC2 inventory script
+        run: |
+          python labs/lab2_ec2_inventory/ec2_inventory.py \
+            --bucket my-audit-evidence-bucket \
+            --scope-tag "${{ env.SCOPE_TAG }}"
