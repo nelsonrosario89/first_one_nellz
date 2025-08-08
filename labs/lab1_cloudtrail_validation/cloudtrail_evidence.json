@@ -1,0 +1,143 @@
+{
+  "timestamp": "2025-08-07T04:59:18.339200Z",
+  "region_results": {
+    "af-south-1": {
+      "has_multi_region_trail": false,
+      "error": "UnrecognizedClientException"
+    },
+    "ap-east-1": {
+      "has_multi_region_trail": false,
+      "error": "UnrecognizedClientException"
+    },
+    "ap-east-2": {
+      "has_multi_region_trail": false,
+      "error": "UnrecognizedClientException"
+    },
+    "ap-northeast-1": {
+      "has_multi_region_trail": false,
+      "trails": []
+    },
+    "ap-northeast-2": {
+      "has_multi_region_trail": false,
+      "trails": []
+    },
+    "ap-northeast-3": {
+      "has_multi_region_trail": false,
+      "trails": []
+    },
+    "ap-south-1": {
+      "has_multi_region_trail": false,
+      "trails": []
+    },
+    "ap-south-2": {
+      "has_multi_region_trail": false,
+      "error": "UnrecognizedClientException"
+    },
+    "ap-southeast-1": {
+      "has_multi_region_trail": false,
+      "trails": []
+    },
+    "ap-southeast-2": {
+      "has_multi_region_trail": false,
+      "trails": []
+    },
+    "ap-southeast-3": {
+      "has_multi_region_trail": false,
+      "error": "UnrecognizedClientException"
+    },
+    "ap-southeast-4": {
+      "has_multi_region_trail": false,
+      "error": "UnrecognizedClientException"
+    },
+    "ap-southeast-5": {
+      "has_multi_region_trail": false,
+      "error": "UnrecognizedClientException"
+    },
+    "ap-southeast-7": {
+      "has_multi_region_trail": false,
+      "error": "UnrecognizedClientException"
+    },
+    "ca-central-1": {
+      "has_multi_region_trail": false,
+      "trails": []
+    },
+    "ca-west-1": {
+      "has_multi_region_trail": false,
+      "error": "UnrecognizedClientException"
+    },
+    "eu-central-1": {
+      "has_multi_region_trail": false,
+      "trails": []
+    },
+    "eu-central-2": {
+      "has_multi_region_trail": false,
+      "error": "UnrecognizedClientException"
+    },
+    "eu-north-1": {
+      "has_multi_region_trail": false,
+      "trails": []
+    },
+    "eu-south-1": {
+      "has_multi_region_trail": false,
+      "error": "UnrecognizedClientException"
+    },
+    "eu-south-2": {
+      "has_multi_region_trail": false,
+      "error": "UnrecognizedClientException"
+    },
+    "eu-west-1": {
+      "has_multi_region_trail": false,
+      "trails": []
+    },
+    "eu-west-2": {
+      "has_multi_region_trail": false,
+      "trails": []
+    },
+    "eu-west-3": {
+      "has_multi_region_trail": false,
+      "trails": []
+    },
+    "il-central-1": {
+      "has_multi_region_trail": false,
+      "error": "UnrecognizedClientException"
+    },
+    "me-central-1": {
+      "has_multi_region_trail": false,
+      "error": "UnrecognizedClientException"
+    },
+    "me-south-1": {
+      "has_multi_region_trail": false,
+      "error": "UnrecognizedClientException"
+    },
+    "mx-central-1": {
+      "has_multi_region_trail": false,
+      "error": "UnrecognizedClientException"
+    },
+    "sa-east-1": {
+      "has_multi_region_trail": false,
+      "trails": []
+    },
+    "us-east-1": {
+      "has_multi_region_trail": true,
+      "trails": [
+        "management-events"
+      ]
+    },
+    "us-east-2": {
+      "has_multi_region_trail": false,
+      "trails": []
+    },
+    "us-west-1": {
+      "has_multi_region_trail": false,
+      "trails": []
+    },
+    "us-west-2": {
+      "has_multi_region_trail": false,
+      "trails": []
+    }
+  },
+  "summary": {
+    "regions_with_trail": 1,
+    "regions_missing": 32
+  }
+}
