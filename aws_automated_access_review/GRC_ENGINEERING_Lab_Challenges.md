@@ -29,8 +29,12 @@ A progressive set of hands-on challenges that demonstrate how to gather audit ev
 * **Python Automation:** Boto3 script pulls all instances, parses SG rules & tags, auto-labels items as **in-scope** / **out-of-scope** and exports CSV.
 * **ISO 27001 Control:** A.8.1.1 – *Inventory of Assets*
 * **Documentation Notes:**  
-  * Include column definitions (asset name, purpose, scope flag).  
-  * Explain tagging logic in README.
+  * **Workflow triggers:** automatically on `push` to any file in `labs/lab2_ec2_inventory/**`, on a daily schedule at 06:00 UTC, or via the **Run workflow** button in the Actions tab.  
+  * **Evidence location:** CSV files are written to `s3://my-audit-evidence-bucket/ec2-inventory/` (one per run, timestamp-keyed).  
+  * **CSV columns:** `InstanceId`, `Name`, `State`, `VpcId`, `SecurityGroups`, `Tags`, `Scope` ("In" / "Out").  
+  * **Scope logic:** any instance with tag `Scope=In` (case-insensitive) is flagged **in-scope** for compliance reporting; everything else is **out-of-scope**.  
+  * **Successful run evidence:** GitHub Actions run `ec2-inventory` on commit `75fa812` (2025-08-10) finished green and uploaded `ec2-inventory-2025-08-10T23:21Z.csv` to S3.  
+  * **Next improvements:** add unit tests with `pytest` + `moto`, consider deploying the script as a scheduled Lambda via EventBridge, and add a workflow-status badge to the project README.
 
 ---
 
