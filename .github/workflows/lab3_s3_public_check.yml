@@ -1,0 +1,50 @@
+name: lab3_s3_public_check
+
+on:
+  push:
+    paths:
+      - 'labs/lab3_s3_public_check/**'
+      - '.github/workflows/lab3_s3_public_check.yml'
+  schedule:
+    # 06:15 UTC every day
+    - cron: '15 6 * * *'
+  workflow_dispatch:
+
+jobs:
+  s3-public-check:
+    runs-on: ubuntu-latest
+
+    permissions:
+      id-token: write   # allow OIDC federation
+      contents: read
+
+    env:
+      AWS_REGION: us-east-1
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Configure AWS credentials via OIDC
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ASSUME_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Run S3 public-access check
+        env:
+          EVIDENCE_BUCKET: ${{ secrets.EVIDENCE_BUCKET }}
+        run: |
+          python labs/lab3_s3_public_check/s3_public_check.py \
+            --region $AWS_REGION \
+            ${EVIDENCE_BUCKET:+--evidence-bucket $EVIDENCE_BUCKET}

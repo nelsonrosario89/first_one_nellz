@@ -42,12 +42,27 @@ A progressive set of hands-on challenges that demonstrate how to gather audit ev
 
 ### Lab 3 – Auto-Detect Public S3 Buckets
 * **Objective:** Identify and flag S3 buckets with public access.
-* **AWS Services:** S3, Security Hub, Lambda
-* **Python Automation:** Hourly (or S3-event) Lambda evaluates bucket ACL & policy, sends findings to Security Hub.
+* **AWS Services:** S3, Security Hub, GitHub Actions (OIDC-assumed role)
+* **Python Automation:** Daily GitHub Actions job runs `s3_public_check.py`, scans bucket ACLs & policies, publishes **Security Hub** findings, and uploads a JSON summary to the evidence S3 bucket.
 * **ISO 27001 Control:** A.9.4.1 – *Information Access Restriction*
-* **Documentation Notes:**  
-  * Show sample Security Hub finding JSON.  
-  * Note how the finding maps to the control requirement.
+* **Workflow triggers:** on any `push` to `labs/lab3_s3_public_check/**`, at 06:15 UTC daily, or manual **Run workflow** in the Actions tab.
+* **Evidence location:** JSON summary written to `s3://<EVIDENCE_BUCKET>/s3-public-audit/` (timestamp-keyed).
+* **Security Hub finding schema (trimmed):**
+  ```json
+  {
+    "Id": "s3-public-access-example-bucket",
+    "GeneratorId": "s3-public-access-check",
+    "Title": "S3 bucket 'example-bucket' public access check",
+    "Severity": {"Normalized": 8},
+    "Compliance": {"Status": "FAILED"},
+    "Resources": [{"Type": "AwsS3Bucket", "Id": "arn:aws:s3:::example-bucket"}]
+  }
+  ```
+* **Next improvements:**
+  * Convert script to Lambda + EventBridge hourly trigger for faster detection.
+  * Add unit tests with `moto` mocking bucket ACL/policy scenarios.
+  * Build a Security Hub **Insight** to track public buckets over time.
+
 
 ---
 

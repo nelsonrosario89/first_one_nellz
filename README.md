@@ -1,5 +1,7 @@
 # Python GRC Automation Toolkit
 
+[![Lab 3 – S3 Public Check](https://github.com/nelsonrosario89/first_one_nellz/actions/workflows/lab3_s3_public_check.yml/badge.svg)](https://github.com/nelsonrosario89/first_one_nellz/actions/workflows/lab3_s3_public_check.yml)
+
 This repository contains hands-on examples from **Section 3: Python for GRC Engineering**.
 
 ## Contents

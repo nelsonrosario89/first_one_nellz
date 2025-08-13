@@ -1,0 +1,15 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "Lab3S3PublicCheck",
+      "Effect": "Allow",
+      "Action": [
+        "s3:GetBucketAcl",
+        "s3:GetBucketPolicy",
+        "securityhub:BatchImportFindings"
+      ],
+      "Resource": "*"
+    }
+  ]
+}
