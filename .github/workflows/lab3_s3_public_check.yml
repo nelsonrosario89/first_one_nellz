@@ -48,3 +48,16 @@ jobs:
           python labs/lab3_s3_public_check/s3_public_check.py \
             --region $AWS_REGION \
             ${EVIDENCE_BUCKET:+--evidence-bucket $EVIDENCE_BUCKET}
+
+      - name: Add outputs to summary
+        if: success()
+        env:
+          EVIDENCE_BUCKET: ${{ secrets.EVIDENCE_BUCKET }}
+          AWS_REGION: ${{ env.AWS_REGION }}
+        run: |
+          echo "## Outputs" >> $GITHUB_STEP_SUMMARY
+          echo "* **Security Hub view**: <https://$AWS_REGION.console.aws.amazon.com/securityhub/home?region=$AWS_REGION#/findings?search=GeneratorId%3D%255C%2522lab3_s3_public_check%255C%2522>" >> $GITHUB_STEP_SUMMARY
+          if [ -n "$EVIDENCE_BUCKET" ]; then
+            TODAY=$(date +%F)
+            echo "* **Evidence CSV**: s3://$EVIDENCE_BUCKET/lab3_s3_public_check/$TODAY/bucket_public_check.csv" >> $GITHUB_STEP_SUMMARY
+          fi
