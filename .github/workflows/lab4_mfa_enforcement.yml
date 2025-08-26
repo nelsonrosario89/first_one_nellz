@@ -1,5 +1,9 @@
 name: Lab 4 MFA Enforcement
 
+permissions:
+  id-token: write
+  contents: read
+
 on:
   workflow_dispatch: {}              # manual trigger
   schedule:
@@ -7,6 +11,9 @@ on:
 
 jobs:
   mfa-enforcement:
+    permissions:
+      id-token: write  # allow OIDC federation
+      contents: read
     name: Run IAM MFA evidence check
     runs-on: ubuntu-latest
     env:
@@ -26,10 +33,15 @@ jobs:
           python -m pip install --upgrade pip
           pip install boto3
 
+      - name: Show role secret length (masked)
+        run: echo "ROLE length ${#AWS_ASSUME_ROLE_ARN}"
+        env:
+          AWS_ASSUME_ROLE_ARN: ${{ secrets.AWS_ASSUME_ROLE_ARN }}
+      
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          role-to-assume: ${{ secrets.AWS_ASSUME_ROLE_ARN }}
           aws-region: ${{ env.AWS_REGION }}
           role-session-name: GitHubActions-MFAEnforcement
 
