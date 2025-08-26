@@ -1,0 +1,56 @@
+name: Lab 4 MFA Enforcement
+
+on:
+  workflow_dispatch: {}              # manual trigger
+  schedule:
+    - cron: "30 7 * * *"             # 07:30 UTC daily
+
+jobs:
+  mfa-enforcement:
+    name: Run IAM MFA evidence check
+    runs-on: ubuntu-latest
+    env:
+      AWS_REGION: ${{ secrets.AWS_REGION || 'us-east-1' }}
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install boto3
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+          role-session-name: GitHubActions-MFAEnforcement
+
+      - name: Run MFA enforcement check
+        env:
+          EVIDENCE_BUCKET: ${{ secrets.EVIDENCE_BUCKET }}
+        run: |
+          python labs/lab4_mfa_enforcement/mfa_check.py \
+            --region $AWS_REGION \
+            ${EVIDENCE_BUCKET:+--evidence-bucket $EVIDENCE_BUCKET}
+
+      - name: Add outputs to summary
+        if: success()
+        env:
+          EVIDENCE_BUCKET: ${{ secrets.EVIDENCE_BUCKET }}
+          AWS_REGION: ${{ env.AWS_REGION }}
+        run: |
+          echo "## Outputs" >> $GITHUB_STEP_SUMMARY
+          echo "* **Security Hub view**: <https://$AWS_REGION.console.aws.amazon.com/securityhub/home?region=$AWS_REGION#/findings?search=GeneratorId%3D%2522lab4_mfa_enforcement%2522>" >> $GITHUB_STEP_SUMMARY
+          if [ -n "$EVIDENCE_BUCKET" ]; then
+            TODAY=$(date +%F)
+            echo "* **Evidence CSV prefix**: s3://$EVIDENCE_BUCKET/iam-mfa-audit/ (check file for $TODAY)" >> $GITHUB_STEP_SUMMARY
+          fi
+          
