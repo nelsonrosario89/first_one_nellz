@@ -80,6 +80,12 @@ def create_finding(user: Dict[str, Any], region: str, mfa_enabled: bool) -> Dict
         "CreatedAt": now,
         "UpdatedAt": now,
         "Severity": {"Normalized": int(sev)},
+        "FindingProviderFields": {
+            "Severity": {"Label": "INFORMATIONAL" if mfa_enabled else "HIGH"},
+            "Types": [
+                "Software and Configuration Checks/Industry and Regulatory Standards/ISO 27001/A.9.2.3"
+            ]
+        },
         "Title": f"IAM user '{username}' MFA enforcement check",
         "Description": (
             "User has MFA enabled." if mfa_enabled else "User does NOT have MFA enabled."
