@@ -1,0 +1,25 @@
+[
+  {
+    "SchemaVersion": "2018-10-08",
+    "Id": "iam-user-mfa-iamadmin",
+    "ProductArn": "arn:aws:securityhub:us-east-1:097089567108:product/097089567108/default",
+    "GeneratorId": "iam-mfa-enforcement-check",
+    "AwsAccountId": "097089567108",
+    "Types": ["Software and Configuration Checks/MFA"],
+    "CreatedAt": "2025-08-26T00:00:00Z",
+    "UpdatedAt": "2025-08-26T00:00:00Z",
+    "Severity": {"Normalized": 0},
+    "FindingProviderFields": {
+      "Severity": {"Label": "INFORMATIONAL"},
+      "Types": ["Software and Configuration Checks/MFA"]
+    },
+    "Title": "IAM user 'iamadmin' MFA enforcement check",
+    "Description": "User has MFA enabled.",
+    "Resources": [{
+      "Type": "AwsIamUser",
+      "Id": "arn:aws:iam::097089567108:user/iamadmin",
+      "Region": "us-east-1"
+    }],
+    "RecordState": "ACTIVE"
+  }
+]

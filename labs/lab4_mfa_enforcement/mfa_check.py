@@ -63,7 +63,7 @@ def user_has_mfa(iam_client, username: str) -> bool:
 
 
 def create_finding(user: Dict[str, Any], region: str, mfa_enabled: bool) -> Dict[str, Any]:
-    now = dt.datetime.utcnow().replace(tzinfo=dt.timezone.utc).isoformat()
+    now = dt.datetime.now(dt.timezone.utc).isoformat()
     sev = 0.0 if mfa_enabled else 8.0
     status = "PASSED" if mfa_enabled else "FAILED"
     username = user["UserName"]
@@ -74,7 +74,7 @@ def create_finding(user: Dict[str, Any], region: str, mfa_enabled: bool) -> Dict
         "GeneratorId": "iam-mfa-enforcement-check",
         "AwsAccountId": ACCOUNT_ID,
         "Types": [
-            "Software and Configuration Checks/Industry and Regulatory Standards/ISO 27001/A.9.2.3"
+            "Software and Configuration Checks/MFA"
         ],
         "FirstObservedAt": now,
         "CreatedAt": now,
@@ -83,7 +83,7 @@ def create_finding(user: Dict[str, Any], region: str, mfa_enabled: bool) -> Dict
         "FindingProviderFields": {
             "Severity": {"Label": "INFORMATIONAL" if mfa_enabled else "HIGH"},
             "Types": [
-                "Software and Configuration Checks/Industry and Regulatory Standards/ISO 27001/A.9.2.3"
+                "Software and Configuration Checks/MFA"
             ]
         },
         "Title": f"IAM user '{username}' MFA enforcement check",

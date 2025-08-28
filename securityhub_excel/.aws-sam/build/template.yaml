@@ -1,0 +1,44 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Export AWS Security Hub findings to Excel in S3
+Resources:
+  ReportBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      VersioningConfiguration:
+        Status: Enabled
+  SecurityHubExporter:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: SecurityHubExporter
+      Handler: app.handler
+      Runtime: python3.12
+      MemorySize: 256
+      Timeout: 900
+      Policies:
+      - AWSLambdaBasicExecutionRole
+      - Statement:
+        - Effect: Allow
+          Action: securityhub:GetFindings
+          Resource: '*'
+      - Statement:
+        - Effect: Allow
+          Action: s3:PutObject*
+          Resource:
+            Fn::Sub: ${ReportBucket.Arn}/*
+      Environment:
+        Variables:
+          REPORT_BUCKET:
+            Ref: ReportBucket
+    Metadata:
+      SamResourceId: SecurityHubExporter
+  DailyTrigger:
+    Type: AWS::Events::Rule
+    Properties:
+      ScheduleExpression: cron(0 3 * * ? *)
+      Targets:
+      - Arn:
+          Fn::GetAtt:
+          - SecurityHubExporter
+          - Arn
+        Id: LambdaTarget

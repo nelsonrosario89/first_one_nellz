@@ -1,0 +1,1 @@
+{"errorMessage": "'FirstObservedAt'", "errorType": "KeyError", "requestId": "7f1b73c6-19d7-4b2e-b96b-79f9a5ab5054", "stackTrace": ["  File \"/var/task/app.py\", line 26, in handler\n    wb = _build_workbook(findings)\n", "  File \"/var/task/app.py\", line 74, in _build_workbook\n    f[\"FirstObservedAt\"][:10],\n"]}
