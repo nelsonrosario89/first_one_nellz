@@ -23,7 +23,7 @@ Only an old *Test MFA finding* ever appeared because Security Hub silently rejec
 ## Remaining Clean-up
 * [x] Archive the old *Test MFA finding* in Security Hub.
 * [x] Remove the temporary **Show role secret length** step from workflow YAML.
-* [ ] (Optional) add unit test that validates generated finding schema with regex.
+* [x] (Optional) add unit test that validates generated finding schema with regex.
 
 ## 27 Aug 2025 – AWS Config Recorder & Security Hub Config.1 Fix
 1. Enabled customer-managed recorder in **us-east-1** – console now shows *Recording is on*.
@@ -34,6 +34,7 @@ Only an old *Test MFA finding* ever appeared because Security Hub silently rejec
 4. Confirmed first configuration file uploaded:
    `aws-config/AWSLogs/097089567108/Config/us-east-1/2025/8/27/ConfigHistory/…json.gz` (1 KiB).
 5. No Config rule needed; Security Hub control **Config.1** will flip to PASSED on next evaluation cycle (~24 h).
+6. Added **pytest** unit test `tests/test_mfa_finding_schema.py` to validate ASFF schema (checks `Types` format and required keys).
+7. Updated `mfa_check.py` and the new test to use timezone-aware `datetime.now(datetime.timezone.utc)` to silence deprecation warnings.
+8. Committed and pushed changes with message `"Lab4: add ASFF schema unit test and switch to timezone-aware datetime"`.
 
----
-*Author: automation notes generated with Cascade on 26 Aug 2025*
