@@ -39,7 +39,7 @@ jobs:
 
       - name: Package Lambda code
         run: |
-          zip -j sg_drift_checker.zip aws_access_review/labs/lab5_sg_drift_detection/sg_drift_checker.py
+          zip -j sg_drift_checker.zip labs/lab5_sg_drift_detection/sg_drift_checker.py
 
       - name: Deploy Lambda ${{ env.FUNCTION_NAME }}
         run: |
