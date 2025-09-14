@@ -36,7 +36,7 @@ jobs:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: ${{ secrets.AWS_ASSUME_ROLE_ARN }}
+          role-to-assume: ${{ secrets.AWS_ASSUME_ROLE_ARN_LAB4 }}
           aws-region: ${{ env.AWS_REGION }}
           role-session-name: GitHubActions-MFAEnforcement
 

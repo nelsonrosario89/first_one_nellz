@@ -38,7 +38,7 @@ jobs:
       - name: Configure AWS credentials via OIDC
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: ${{ secrets.AWS_ASSUME_ROLE_ARN }}  # role to assume  
+          role-to-assume: ${{ secrets.AWS_ASSUME_ROLE_ARN_LAB3 }}  # lab-specific role
           aws-region: ${{ env.AWS_REGION }} # region to use
 
       - name: Run S3 public-access check
