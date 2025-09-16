@@ -41,6 +41,18 @@ jobs:
         run: |
           zip -j ${FUNCTION_NAME}.zip labs/lab6_continuous_monitoring/continuous_control_monitor.py
 
+      - name: Create Lambda if it doesn't exist
+        env:
+          EXEC_ROLE_ARN: arn:aws:iam::097089567108:role/lab6_continuous_monitoring
+        run: |
+          aws lambda get-function --function-name $FUNCTION_NAME || \
+          aws lambda create-function \
+            --function-name $FUNCTION_NAME \
+            --runtime python3.11 \
+            --handler continuous_control_monitor.lambda_handler \
+            --role "$EXEC_ROLE_ARN" \
+            --zip-file fileb://${FUNCTION_NAME}.zip
+    
       - name: Deploy Lambda ${{ env.FUNCTION_NAME }}
         run: |
           aws lambda update-function-code \
