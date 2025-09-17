@@ -29,8 +29,8 @@ from typing import Any
 import boto3
 from botocore.exceptions import ClientError
 
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
+LOGGER = logging.getLogger(__name__)
+LOGGER.setLevel(logging.INFO)
 
 sh = boto3.client("securityhub")
 cw = boto3.client("cloudwatch")
@@ -41,8 +41,14 @@ INSIGHT_NAME = os.getenv("INSIGHT_NAME", f"{TAG_VALUE}-OpenFindings")
 CW_NAMESPACE = os.getenv("CW_NAMESPACE", "Custom/SecurityHub")
 CW_METRIC_NAME = os.getenv("CW_METRIC_NAME", "OpenFindings")
 
-TAG_FILTER = {"TagKey": TAG_KEY, "TagValue": TAG_VALUE}
-INSIGHT_FILTER = {"ResourceTags": [TAG_FILTER], "RecordState": ["ACTIVE"]}
+# Security Hub insight filters must follow AwsSecurityFindingFilters schema.
+# ResourceTags entries require Key, Value, Comparison; RecordState is a KeywordFilter
+# with entries {Value: "ACTIVE", Comparison: "EQUALS"}
+TAG_FILTER = {"Key": TAG_KEY, "Value": TAG_VALUE, "Comparison": "EQUALS"}
+INSIGHT_FILTER = {
+    "ResourceTags": [TAG_FILTER],
+    "RecordState": [{"Value": "ACTIVE", "Comparison": "EQUALS"}],
+}
 
 def _find_existing_insight() -> str | None:
     """Return the ARN of an existing insight with the configured name."""
