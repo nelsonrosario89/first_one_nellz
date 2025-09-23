@@ -29,8 +29,8 @@ from typing import Any
 import boto3
 from botocore.exceptions import ClientError
 
-LOGGER = logging.getLogger(__name__)
-LOGGER.setLevel(logging.INFO)
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
 
 sh = boto3.client("securityhub")
 cw = boto3.client("cloudwatch")
@@ -42,7 +42,7 @@ CW_NAMESPACE = os.getenv("CW_NAMESPACE", "Custom/SecurityHub")
 CW_METRIC_NAME = os.getenv("CW_METRIC_NAME", "OpenFindings")
 
 # Security Hub insight filters must follow AwsSecurityFindingFilters schema.
-# ResourceTags entries require Key, Value, Comparison; RecordState is a KeywordFilter
+# ResourceTags entries require Key, Value, Comparison; RecordState is a StringFilter
 # with entries {Value: "ACTIVE", Comparison: "EQUALS"}
 TAG_FILTER = {"Key": TAG_KEY, "Value": TAG_VALUE, "Comparison": "EQUALS"}
 INSIGHT_FILTER = {
@@ -70,14 +70,25 @@ def _create_or_update_insight() -> str:
             logger.warning("Failed to update insight %s: %s", arn, exc)
         return arn
 
-    resp = sh.create_insight(Name=INSIGHT_NAME, Filters=INSIGHT_FILTER, GroupByAttribute="Type")
-    arn = resp["InsightArn"]
-    logger.info("Created new insight %s", arn)
-    return arn
+    try:
+        resp = sh.create_insight(Name=INSIGHT_NAME, Filters=INSIGHT_FILTER, GroupByAttribute="Type")
+        arn = resp["InsightArn"]
+        logger.info("Created new insight %s", arn)
+        return arn
+    except ClientError:
+        logger.exception("create_insight failed")
+        # propagate None to signal a later safe fallback
+        return ""
 
 def _get_open_findings(insight_arn: str) -> int:
-    resp = sh.get_insight_results(InsightArn=insight_arn)
-    return resp["InsightResults"]["TotalFindings"]
+    try:
+        if not insight_arn:
+            return 0
+        resp = sh.get_insight_results(InsightArn=insight_arn)
+        return resp["InsightResults"]["TotalFindings"]
+    except ClientError:
+        logger.exception("get_insight_results failed for %s", insight_arn)
+        return 0
 
 def _publish_metric(value: int) -> None:
     cw.put_metric_data(
@@ -94,9 +105,13 @@ def _publish_metric(value: int) -> None:
 def lambda_handler(event: dict[str, Any], _context: Any) -> dict[str, Any]:  # noqa: D401
     """Lambda entry point."""
     logger.debug("Event: %s", event)
-
-    insight_arn = _create_or_update_insight()
-    open_count = _get_open_findings(insight_arn)
-    _publish_metric(open_count)
-
-    return {"insight": insight_arn, "open_findings": open_count}
+    try:
+        insight_arn = _create_or_update_insight()
+        open_count = _get_open_findings(insight_arn)
+        _publish_metric(open_count)
+        return {"insight": insight_arn, "open_findings": open_count}
+    except Exception:
+        # Never fail the function; publish 0 to keep the dashboard alive
+        logger.exception("Unhandled exception in lambda_handler; publishing 0")
+        _publish_metric(0)
+        return {"insight": "", "open_findings": 0, "error": "handled"}
