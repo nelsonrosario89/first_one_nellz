@@ -13,6 +13,10 @@
 body {
   margin: 0;
   background: radial-gradient(circle at top, rgba(32, 56, 91, 0.45), transparent 60%), #05070c;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 a {
