@@ -272,15 +272,15 @@ If yes, just drop your `resume.pdf` file in the project directory and I'll add a
 ### Style & Theme
 
 **Preferred Color Scheme:**  
-- [ ] Professional Blue (default)
-- [x] Dark Mode (modern tech look)
+- [x] Professional Blue (default)
+- [ ] Dark Mode (modern tech look)
 - [ ] Minimal Black & White
 - [ ] Custom (specify colors): ___________
 
 **Style Preference:**  
 - [ ] Clean & Minimal (default)
-- [x] Bold & Modern
-- [ ] Corporate & Professional
+- [ ] Bold & Modern
+- [x] Corporate & Professional
 - [ ] Creative & Unique
 
 **Special Requests:**  
