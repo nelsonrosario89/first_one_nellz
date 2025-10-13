@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nelson Rosario | Cloud GRC Engineer</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="page-container">
+    <header class="hero">
+      <div class="hero__content">
+        <p class="hero__eyebrow">Cloud GRC Engineer · ISO/IEC 27001 Lead Auditor</p>
+        <h1>Nelson Rosario</h1>
+        <p class="hero__summary">
+          I’m an aspiring Governance, Risk, and Compliance professional focused on AWS cloud security and
+          automation. This portfolio captures how I blend hands-on engineering with audit discipline to deliver
+          outcomes that go well beyond tenure alone.
+        </p>
+        <p class="hero__summary">
+          I specialize in Python & console-driven evidence automation that keeps AWS environments compliant—automating
+          audits, driving remediation, and translating dense security requirements into production-ready
+          solutions.
+        </p>
+        <p class="hero__summary">
+          I’m an ISO 27001 Lead Auditor continuing to expand a suite of nine AWS security automation labs, each
+          proving how rigorous governance and modern cloud tooling can move at engineering speed.
+        </p>
+        <div class="hero__cta">
+          <a class="btn primary" href="mailto:nelson.rosario89@gmail.com">Email Me</a>
+          <a class="btn outline" href="https://www.linkedin.com/in/nelson-rosario-16b99684" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn outline" href="https://github.com/nelsonrosario89" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn outline" href="../resume.pdf" download>Download Resume</a>
+        </div>
+        <div class="meta">
+          <span>Los Angeles, CA · Remote Ready</span>
+          <span>128+ professional connections</span>
+        </div>
+      </div>
+      <div class="hero__badge-stack">
+        <a class="badge" href="https://github.com/nelsonrosario89/first_one_nellz/actions/workflows/lab3_s3_public_check.yml" target="_blank" rel="noopener">
+          <img src="https://github.com/nelsonrosario89/first_one_nellz/actions/workflows/lab3_s3_public_check.yml/badge.svg" alt="Lab 3  4 S3 Public Check status badge" />
+        </a>
+        <a class="badge secondary" href="https://github.com/nelsonrosario89/first_one_nellz" target="_blank" rel="noopener">
+          <span> View AWS Compliance Labs Automation Suite</span>
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <section id="skills" class="section">
+      <div class="section__header">
+        <h2>Skills & Tooling</h2>
+        <p>Continuous compliance, security automation, and AWS evidence pipelines.</p>
+      </div>
+      <div class="grid skills">
+        <div class="card">
+          <h3>Cloud Platforms</h3>
+          <ul>
+            <li>AWS multi-account governance</li>
+            <li>Evidence automation & guardrails</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Security & Compliance</h3>
+          <ul>
+            <li>ISO/IEC 27001:2022</li>
+            <li>SOC 2 Trust Services Criteria</li>
+            <li>NIST 800-53 · CIS AWS Foundations</li>
+            <li>Risk assessment & audit readiness</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Tools & Automation</h3>
+          <ul>
+            <li>AWS CloudFormation & CDK</li>
+            <li>GitHub Actions OIDC federation</li>
+            <li>AWS Lambda · Config · Security Hub</li>
+            <li>CloudWatch · GuardDuty · boto3 · pandas</li>
+            <li>cfn-guard · Slack workflow automation</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Programming & Frameworks</h3>
+          <ul>
+            <li>Python · Bash · YAML/JSON policy-as-code</li>
+            <li>ISO 27001 Annex A controls</li>
+            <li>NIST RMF · CIS Critical Controls</li>
+            <li>Audit evidence automation & reporting</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section">
+      <div class="section__header">
+        <h2>Highlighted Projects</h2>
+        <p>Evidence automation labs transforming manual audits into daily control verification.</p>
+      </div>
+      <div class="projects">
+        <article class="card project">
+          <header>
+            <h3>AWS Compliance Labs Automation Suite</h3>
+            <span class="tag">Ongoing</span>
+          </header>
+          <p>Series of GitHub Actions + AWS Lambda labs that schedule daily ISO 27001 evidence collection for CloudTrail, EC2, S3, and IAM controls.</p>
+          <ul>
+            <li>Automated evidence generation across all AWS regions with zero manual steps.</li>
+            <li>Least-privilege GitHub-to-AWS federation with scoped IAM trust policies.</li>
+            <li>Evidence versioned to S3 for auditor-ready retrieval.</li>
+          </ul>
+          <div class="project__links">
+            <a href="https://github.com/nelsonrosario89/first_one_nellz" target="_blank" rel="noopener">View Repository</a>
+          </div>
+        </article>
+
+        <article class="card project">
+          <header>
+            <h3>CloudTrail Multi-Region Validation (Lab 1)</h3>
+          </header>
+          <p>Lambda-powered audit that ensures CloudTrail log coverage in every AWS region and writes JSON evidence to S3.</p>
+          <ul>
+            <li>Maps directly to ISO 27001 A.12.4.1 (event logging).</li>
+            <li>Detects missing trails across commercial regions within minutes.</li>
+            <li>Scheduled via GitHub Actions for daily attestation.</li>
+          </ul>
+          <div class="project__links">
+            <a href="https://github.com/nelsonrosario89/first_one_nellz" target="_blank" rel="noopener">Implementation</a>
+          </div>
+        </article>
+
+        <article class="card project">
+          <header>
+            <h3>EC2 Asset Inventory & Scope Tagging (Lab 2)</h3>
+          </header>
+          <p>Cross-region inventory script that classifies EC2 assets by scope and exports CSV evidence for ISO 27001 A.8.1.1.</p>
+          <ul>
+            <li>Applies tagging logic to separate in-scope workloads automatically.</li>
+            <li>Daily CSV uploads to S3 with immutable versioning.</li>
+            <li>Hardened IAM trust policy restricting assume-role access to CI pipelines.</li>
+          </ul>
+          <div class="project__links">
+            <a href="https://github.com/nelsonrosario89/first_one_nellz/tree/main/.github/workflows" target="_blank" rel="noopener">Workflow</a>
+          </div>
+        </article>
+
+        <article class="card project">
+          <header>
+            <h3>IAM Access Review Automation</h3>
+          </header>
+          <p>CLI tool that inspects IAM users and roles, flags wildcard permissions, and exports sign-off ready CSVs.</p>
+          <ul>
+            <li>Reduced high-risk IAM findings by 72% following remediation cycles.</li>
+            <li>Highlights missing MFA and excessive privileges for rapid action.</li>
+            <li>Delivers auditable evidence packages to control owners.</li>
+          </ul>
+          <div class="project__links">
+            <a href="https://github.com/nelsonrosario89/first_one_nellz" target="_blank" rel="noopener">View Automation</a>
+          </div>
+        </article>
+
+        <article class="card project">
+          <header>
+            <h3>S3 Public-Access Detector (Planned · Lab 3)</h3>
+            <span class="tag">In Design</span>
+          </header>
+          <p>Upcoming Lambda + Security Hub integration that scans S3 buckets hourly and raises findings for public ACLs or bucket policies.</p>
+          <ul>
+            <li>Creates Security Hub custom findings with High severity.</li>
+            <li>Closes the loop on data exposure guardrails.</li>
+            <li>Extends the automation suite toward continuous monitoring.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="certifications" class="section">
+      <div class="section__header">
+        <h2>Certifications & Learning</h2>
+        <p>Blending formal audit practice with hands-on security engineering.</p>
+      </div>
+      <div class="grid credentials">
+        <div class="card">
+          <h3>Completed</h3>
+          <ul>
+            <li>ISO/IEC 27001:2022 Lead Auditor – Mastermind (2025)</li>
+            <li>Navigate SOC 2 Compliance in the Cloud – LinkedIn Learning (2025)</li>
+            <li>Advanced SOC 2 Auditing: Security, Availability & Confidentiality – LinkedIn Learning (2025)</li>
+            <li>SOC 2 Compliance Essential Training – LinkedIn Learning (2025)</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>In Progress</h3>
+          <ul>
+            <li>AWS Certified Solutions Architect – Associate (2025 target)</li>
+            <li>ISO/IEC 42001:2023 Lead Auditor Certification Course – Mastermind</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="section">
+      <div class="section__header">
+        <h2>Experience Snapshot</h2>
+        <p>Operational rigor from aerospace supply chains, sharpened by professional sports discipline.</p>
+      </div>
+      <div class="timeline">
+        <article class="timeline__item">
+          <h3>Skyworks Solutions, Inc.</h3>
+          <p class="timeline__role">Engineering Services Coordinator · Feb 2021 – Present</p>
+          <ul>
+            <li>Own daily kit pulls, PCB procurement, and BOM accuracy for high-volume production.</li>
+            <li>Lead Agile & SAP data hygiene, kit audits, and vendor negotiations to unblock delivery.</li>
+            <li>Brief executives bi-weekly on progress and spend, aligning cost centers on priorities.</li>
+          </ul>
+        </article>
+        <article class="timeline__item">
+          <h3>V2X (Vertex Aerospace LLC)</h3>
+          <p class="timeline__role">Material Coordinator · Jul 2018 – Oct 2020</p>
+          <ul>
+            <li>Managed import/export logistics for government aircraft programs with contract compliance.</li>
+            <li>Administered SAP EWM/P11 transactions and trained new hires as certified forklift instructor.</li>
+          </ul>
+        </article>
+        <article class="timeline__item">
+          <h3>UPS</h3>
+          <p class="timeline__role">Unloader / Package Handler · Mar 2017 – Jun 2018</p>
+          <ul>
+            <li>Processed high-volume freight while enforcing safety and precision under tight SLAs.</li>
+          </ul>
+        </article>
+        <article class="timeline__item">
+          <h3>Carolina Panthers</h3>
+          <p class="timeline__role">Professional Athlete · Jun 2012 – Aug 2013</p>
+          <ul>
+            <li>Translated elite teamwork, resilience, and discipline from the NFL into operational leadership.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="content" class="section">
+      <div class="section__header">
+        <h2>Content & Community</h2>
+        <p>Building public credibility while lining up future talks and writing.</p>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <h3>Talks & Workshops</h3>
+          <p>Open to speaking about AWS compliance automation, evidence pipelines, and GRC engineering.</p>
+        </div>
+        <div class="card">
+          <h3>Podcasts & Interviews</h3>
+          <p>Currently seeking guest opportunities to discuss cloud compliance automation and operational excellence.</p>
+        </div>
+        <div class="card">
+          <h3>Articles & Writing</h3>
+          <ul>
+            <li>Drafting a blog series on AWS evidence automation (launching with Lab 3).</li>
+            <li>Internal playbooks on GitHub OIDC guardrails and ISO 27001 evidence workflows.</li>
+            <li>LinkedIn updates chronicling the AWS Compliance Labs Automation Suite.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+      <section id="teal" class="section section--accent">
+      <div class="section__header">
+        <h2>Evidence Automation in Action</h2>
+        <p>Continuous monitoring beats annual audit scramble every time.</p>
+      </div>
+      <div class="grid evidence">
+        <div class="card">
+          <h3>Daily CloudTrail Assurance</h3>
+          <p>JSON attestations land in S3 every morning with region coverage, exceptions, and remediation notes.</p>
+        </div>
+        <div class="card">
+          <h3>EC2 Asset Intelligence</h3>
+          <p>CSV inventories highlight in-scope workloads, cost center tags, and orphaned resources ready for action.</p>
+        </div>
+        <div class="card">
+          <h3>IAM Risk Sweeps</h3>
+          <p>Automated reviews flag wildcard permissions and missing MFA so remediation starts within hours.</p>
+        </div>
+      </div>
+      <div class="cta-row">
+        <a class="btn primary" href="mailto:nelson.rosario89@gmail.com?subject=AWS%20Compliance%20Automation">Request Evidence Sample</a>
+        <a class="btn outline" href="https://github.com/nelsonrosario89/first_one_nellz/tree/main/scripts" target="_blank" rel="noopener">Browse Automation Scripts</a>
+      </div>
+    </section>
+
+      <section id="education" class="section">
+      <div class="section__header">
+        <h2>Education</h2>
+      </div>
+      <div class="grid education">
+        <div class="card">
+          <h3>University of California, Los Angeles</h3>
+          <p>Bachelor of Arts · 2008 – 2012</p>
+        </div>
+        <div class="card">
+          <h3>El Camino High School</h3>
+          <p>Diploma · 2004 – 2008</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__content">
+      <p>Let's build audit-ready, developer-friendly compliance together.</p>
+      <div class="footer__links">
+        <a href="mailto:nelson.rosario89@gmail.com">Email</a>
+        <a href="https://www.linkedin.com/in/nelson-rosario-16b99684" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/nelsonrosario89" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+    <p class="footer__note"> 2025 Nelson Rosario · Built with the AWS Deployment Kit</p>
+  </footer>
+</div>
+</body>
+</html>
