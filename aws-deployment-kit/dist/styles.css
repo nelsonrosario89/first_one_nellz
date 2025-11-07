@@ -65,6 +65,7 @@ a:hover {
 h1 {
   font-size: clamp(2.8rem, 5vw, 4rem);
   margin: 0 0 1.5rem;
+  text-align: center;
 }
 
 .hero__summary {
@@ -84,6 +85,9 @@ h1 {
 }
 
 .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: 0.8rem 1.6rem;
   border-radius: 999px;
   text-decoration: none;
@@ -226,6 +230,35 @@ h1 {
   border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
+.cert-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: rgba(244, 246, 251, 0.14);
+  color: rgba(244, 246, 251, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.cert-badge--mastermind {
+  background: linear-gradient(135deg, rgba(95, 139, 247, 0.25), rgba(123, 91, 255, 0.35));
+  color: #dce2ff;
+}
+
+.cert-badge--linkedin {
+  background: linear-gradient(135deg, rgba(0, 119, 181, 0.3), rgba(0, 160, 220, 0.3));
+  color: #d2f4ff;
+}
+
+.cert-badge--aws {
+  background: linear-gradient(135deg, rgba(35, 47, 62, 0.35), rgba(255, 153, 0, 0.35));
+  color: #ffe7c2;
+}
+
 .cert-icon--mastermind {
   background: linear-gradient(135deg, #5f8bf7, #7b5bff);
 }
@@ -238,8 +271,17 @@ h1 {
   background: linear-gradient(135deg, #232f3e, #ff9900);
 }
 
+h2,
+h3 {
+  text-align: center;
+}
+
 .cert-text {
   max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  text-align: center;
 }
 
 .card li {
