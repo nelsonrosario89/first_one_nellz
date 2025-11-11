@@ -225,18 +225,13 @@ h1 {
 
 .grid.credentials,
 .grid.education {
-  display: flex;
-  gap: 1.5rem;
-  overflow-x: auto;
-  padding-bottom: 1rem;
-  scroll-snap-type: x mandatory;
-  justify-content: flex-start;
-  align-items: stretch;
-}
-
-.grid.credentials::-webkit-scrollbar,
-.grid.education::-webkit-scrollbar {
-  display: none;
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  justify-items: center;
+  max-width: 960px;
+  margin: 0 auto;
+  padding-bottom: 0;
 }
 
 .marquee {
@@ -358,8 +353,7 @@ main p {
 }
 .grid.credentials .card,
 .grid.education .card {
-  flex: 0 0 clamp(280px, 85vw, 340px);
-  scroll-snap-align: start;
+  width: min(100%, 360px);
 }
 
 .card h3 {
@@ -542,7 +536,7 @@ h3 {
 }
 
 .education {
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 }
 
 /* Footer */
