@@ -1,0 +1,93 @@
+@import url("../styles.css");
+
+:root {
+  color-scheme: light;
+  background-color: #fdf6ff;
+  color: #2a2d36;
+  font-family: 'Poppins', 'Inter', system-ui, sans-serif;
+}
+
+body {
+  background: radial-gradient(circle at top left, rgba(255, 214, 242, 0.6), transparent 55%),
+    radial-gradient(circle at bottom right, rgba(198, 235, 255, 0.7), transparent 50%),
+    linear-gradient(180deg, #fff7ff 0%, #f3fbff 100%);
+}
+
+.hero {
+  background: linear-gradient(135deg, rgba(255, 214, 242, 0.75), rgba(198, 235, 255, 0.75));
+  border-bottom: 1px solid rgba(152, 173, 197, 0.2);
+  color: #2a2d36;
+}
+
+.hero__summary {
+  color: rgba(42, 45, 54, 0.7);
+}
+
+.btn.primary {
+  background: linear-gradient(135deg, #ff9bd5, #9cd8ff);
+  color: #2a2d36;
+  border: none;
+  box-shadow: 0 12px 32px rgba(255, 155, 213, 0.4);
+}
+
+.btn.outline {
+  background: rgba(156, 216, 255, 0.2);
+  border: 1px solid rgba(156, 216, 255, 0.5);
+  color: #2a2d36;
+}
+
+.meta {
+  color: rgba(42, 45, 54, 0.55);
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(152, 173, 197, 0.2);
+  box-shadow: 0 15px 40px rgba(188, 202, 217, 0.25);
+  border-radius: 22px;
+}
+
+.tag {
+  background: rgba(255, 214, 242, 0.6);
+  color: #c35aa3;
+  border: none;
+}
+
+.section--accent {
+  background: linear-gradient(135deg, rgba(255, 214, 242, 0.6), rgba(198, 235, 255, 0.6));
+  color: #2a2d36;
+}
+
+.cta-row .btn.primary {
+  background: linear-gradient(135deg, #ffa8e0, #a8e4ff);
+}
+
+.footer {
+  background: rgba(255, 255, 255, 0.88);
+  border-top: 1px solid rgba(152, 173, 197, 0.2);
+  color: rgba(42, 45, 54, 0.6);
+}
+
+.footer__links a {
+  color: #c35aa3;
+}
+
+.cert-icon {
+  background: rgba(255, 155, 213, 0.25);
+  border: none;
+  color: #c35aa3;
+}
+
+.cert-badge {
+  background: rgba(156, 216, 255, 0.3);
+  color: #2a2d36;
+  border: none;
+}
+
+.timeline__item {
+  border-left: 3px solid rgba(255, 155, 213, 0.4);
+}
+
+.timeline__item::before {
+  background: linear-gradient(135deg, #ff9bd5, #9cd8ff);
+}

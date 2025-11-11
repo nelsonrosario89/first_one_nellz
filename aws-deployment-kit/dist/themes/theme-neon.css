@@ -1,0 +1,92 @@
+@import url("../styles.css");
+
+:root {
+  color-scheme: dark;
+  background-color: #02030a;
+  color: #f8f9ff;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+body {
+  background: radial-gradient(circle at top left, rgba(0, 238, 255, 0.35), transparent 55%),
+    radial-gradient(circle at bottom right, rgba(255, 0, 204, 0.25), transparent 50%),
+    #03040f;
+}
+
+.hero {
+  background: linear-gradient(135deg, rgba(10, 14, 40, 0.9), rgba(15, 0, 50, 0.8));
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 25px 80px rgba(12, 0, 40, 0.5);
+}
+
+.hero__summary {
+  color: rgba(248, 249, 255, 0.75);
+}
+
+.btn.primary {
+  background: linear-gradient(135deg, #00f5ff, #ff00f7);
+  color: #05020d;
+  box-shadow: 0 15px 45px rgba(0, 245, 255, 0.35);
+}
+
+.btn.outline {
+  background: rgba(0, 245, 255, 0.1);
+  border-color: rgba(0, 245, 255, 0.5);
+  color: #00f5ff;
+}
+
+.btn.primary:hover,
+.btn.outline:hover {
+  box-shadow: 0 20px 50px rgba(255, 0, 247, 0.45);
+}
+
+.meta {
+  color: rgba(0, 245, 255, 0.75);
+}
+
+.card {
+  background: rgba(8, 10, 32, 0.92);
+  border: 1px solid rgba(0, 245, 255, 0.18);
+  box-shadow: 0 25px 60px rgba(0, 10, 45, 0.55);
+  color: #f8f9ff;
+}
+
+.tag {
+  background: rgba(255, 0, 247, 0.2);
+  color: #ff66ff;
+  border: 1px solid rgba(255, 0, 247, 0.35);
+}
+
+.section--accent {
+  background: linear-gradient(140deg, rgba(12, 18, 60, 0.92), rgba(0, 0, 0, 0.85));
+}
+
+.cta-row .btn.primary {
+  background: linear-gradient(135deg, #41efff, #ff5ce9);
+}
+
+.footer {
+  background: #040511;
+  border-top: 1px solid rgba(0, 245, 255, 0.2);
+  color: rgba(248, 249, 255, 0.7);
+}
+
+.cert-icon {
+  background: rgba(0, 245, 255, 0.15);
+  border-color: rgba(0, 245, 255, 0.35);
+  color: #00f5ff;
+}
+
+.cert-badge {
+  background: rgba(255, 0, 247, 0.18);
+  border-color: rgba(255, 0, 247, 0.3);
+  color: #ff9cff;
+}
+
+.timeline__item {
+  border-left-color: rgba(0, 245, 255, 0.4);
+}
+
+.timeline__item::before {
+  background: linear-gradient(135deg, #00f5ff, #ff00f7);
+}

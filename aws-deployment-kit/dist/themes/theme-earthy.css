@@ -1,0 +1,106 @@
+@import url("../styles.css");
+
+:root {
+  color-scheme: light;
+  background-color: #f3f0e6;
+  color: #2e2a25;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+body {
+  background: linear-gradient(180deg, #f3f0e6 0%, #e0dacb 100%);
+  color: #2e2a25;
+}
+
+.hero {
+  background: linear-gradient(120deg, rgba(111, 87, 63, 0.9), rgba(65, 94, 76, 0.85));
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  color: #f8f6f1;
+}
+
+.hero__summary {
+  color: rgba(248, 246, 241, 0.8);
+}
+
+.hero__cta .btn.primary {
+  background: linear-gradient(135deg, #8c6f4c, #a1b36a);
+  color: #f8f6f1;
+  border-color: transparent;
+}
+
+.hero__cta .btn.outline {
+  background: rgba(248, 246, 241, 0.1);
+  border: 1px solid rgba(248, 246, 241, 0.35);
+  color: #f8f6f1;
+}
+
+.meta {
+  color: rgba(248, 246, 241, 0.65);
+}
+
+.card {
+  background: rgba(248, 246, 241, 0.9);
+  border: 1px solid rgba(110, 92, 72, 0.15);
+  box-shadow: 0 20px 45px rgba(78, 66, 52, 0.18);
+  color: #2e2a25;
+}
+
+.card h3 {
+  color: #4f4234;
+}
+
+.card li {
+  color: rgba(46, 42, 37, 0.75);
+}
+
+.tag {
+  background: rgba(161, 179, 106, 0.2);
+  color: #4f6b44;
+  border: 1px solid rgba(79, 107, 68, 0.2);
+}
+
+.section--accent {
+  background: linear-gradient(135deg, rgba(90, 114, 91, 0.95), rgba(55, 70, 57, 0.92));
+  color: #f3f0e6;
+}
+
+.section--accent .card {
+  background: rgba(79, 100, 81, 0.85);
+  border: 1px solid rgba(248, 246, 241, 0.1);
+  color: rgba(248, 246, 241, 0.85);
+}
+
+.cta-row .btn.primary {
+  background: linear-gradient(135deg, #8c6f4c, #a1b36a);
+  color: #f8f6f1;
+}
+
+.footer {
+  background: #4f311c;
+  border-top: 1px solid rgba(248, 246, 241, 0.15);
+  color: rgba(248, 246, 241, 0.7);
+}
+
+.footer__links a {
+  color: #d5e4b6;
+}
+
+.cert-icon {
+  background: rgba(140, 111, 76, 0.18);
+  border: 1px solid rgba(140, 111, 76, 0.25);
+  color: #4f311c;
+}
+
+.cert-badge {
+  background: rgba(161, 179, 106, 0.25);
+  border: 1px solid rgba(161, 179, 106, 0.3);
+  color: #3d5231;
+}
+
+.timeline__item {
+  border-left-color: rgba(140, 111, 76, 0.4);
+}
+
+.timeline__item::before {
+  background: linear-gradient(135deg, #8c6f4c, #a1b36a);
+}

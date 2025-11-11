@@ -1,0 +1,107 @@
+@import url("../styles.css");
+
+:root {
+  color-scheme: dark;
+  background-color: #1a1026;
+  color: #fef5f2;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+body {
+  background: radial-gradient(circle at top, rgba(255, 102, 0, 0.4), transparent 55%),
+    radial-gradient(circle at bottom, rgba(114, 9, 183, 0.55), transparent 60%),
+    linear-gradient(180deg, #1a1026 0%, #2b133c 100%);
+}
+
+.hero {
+  background: linear-gradient(135deg, rgba(255, 94, 58, 0.85), rgba(138, 43, 226, 0.8));
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 30px 60px rgba(84, 6, 140, 0.4);
+}
+
+.hero__summary {
+  color: rgba(254, 245, 242, 0.8);
+}
+
+.hero__cta .btn.primary {
+  background: linear-gradient(135deg, #ff6f61, #ff9966);
+  color: #2b133c;
+  border: none;
+  box-shadow: 0 18px 45px rgba(255, 105, 97, 0.35);
+}
+
+.hero__cta .btn.outline {
+  background: rgba(254, 245, 242, 0.12);
+  border: 1px solid rgba(254, 245, 242, 0.4);
+  color: #fef5f2;
+}
+
+.meta {
+  color: rgba(254, 245, 242, 0.7);
+}
+
+.card {
+  background: rgba(29, 16, 46, 0.92);
+  border: 1px solid rgba(255, 153, 102, 0.12);
+  box-shadow: 0 25px 50px rgba(42, 12, 74, 0.4);
+  color: #fef5f2;
+}
+
+.card h3 {
+  color: rgba(255, 214, 170, 0.95);
+}
+
+.card li {
+  color: rgba(254, 245, 242, 0.75);
+}
+
+.tag {
+  background: rgba(255, 123, 88, 0.25);
+  color: #ffd6aa;
+  border: 1px solid rgba(255, 123, 88, 0.35);
+}
+
+.section--accent {
+  background: linear-gradient(140deg, rgba(79, 0, 113, 0.9), rgba(255, 94, 58, 0.65));
+  color: #fdf0e7;
+}
+
+.section--accent .card {
+  background: rgba(43, 15, 69, 0.85);
+  border: 1px solid rgba(255, 214, 170, 0.18);
+}
+
+.cta-row .btn.primary {
+  background: linear-gradient(135deg, #ff7f50, #ffcc70);
+  color: #2b133c;
+}
+
+.footer {
+  background: #1a0f2c;
+  border-top: 1px solid rgba(255, 214, 170, 0.2);
+  color: rgba(255, 214, 170, 0.7);
+}
+
+.footer__links a {
+  color: #ffcc70;
+}
+
+.cert-icon {
+  background: rgba(255, 153, 102, 0.18);
+  border: 1px solid rgba(255, 153, 102, 0.28);
+  color: #ffcc70;
+}
+
+.cert-badge {
+  background: rgba(255, 204, 112, 0.22);
+  border: 1px solid rgba(255, 204, 112, 0.32);
+  color: #2b133c;
+}
+
+.timeline__item {
+  border-left-color: rgba(255, 153, 102, 0.4);
+}
+
+.timeline__item::before {
+  background: linear-gradient(135deg, #ff6f61, #ffcc70);
+}

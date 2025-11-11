@@ -1,0 +1,96 @@
+@import url("../styles.css");
+
+:root {
+  color-scheme: light;
+  background-color: #f5f7fb;
+  color: #1d2333;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+body {
+  background: radial-gradient(circle at top, rgba(255, 255, 255, 0.85), rgba(216, 223, 235, 0.9)),
+    linear-gradient(180deg, #f5f7fb 0%, #e5eaf6 80%);
+  color: #1d2333;
+}
+
+.hero {
+  background: linear-gradient(120deg, rgba(84, 139, 255, 0.15), rgba(255, 255, 255, 0.9));
+  color: #1d2333;
+  border-bottom: 1px solid rgba(23, 38, 74, 0.08);
+}
+
+.hero__summary {
+  color: rgba(29, 35, 51, 0.72);
+}
+
+.btn.primary {
+  background: linear-gradient(135deg, #4d8bff, #65c6ff);
+  color: #ffffff;
+  border-color: transparent;
+  box-shadow: 0 12px 24px rgba(77, 139, 255, 0.25);
+}
+
+.btn.outline {
+  background: rgba(77, 139, 255, 0.12);
+  color: #2f4b7c;
+  border-color: rgba(47, 75, 124, 0.35);
+}
+
+.meta {
+  color: rgba(29, 35, 51, 0.58);
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(47, 75, 124, 0.1);
+  box-shadow: 0 20px 35px rgba(33, 54, 94, 0.08);
+  color: #2a3348;
+}
+
+.card li {
+  color: rgba(29, 35, 51, 0.75);
+}
+
+.tag {
+  background: rgba(77, 139, 255, 0.16);
+  color: #3a63af;
+}
+
+.section--accent {
+  background: linear-gradient(135deg, rgba(226, 233, 250, 0.95), rgba(203, 215, 241, 0.95));
+  color: #1d2333;
+}
+
+.cta-row .btn.primary {
+  background: linear-gradient(135deg, #3a6cff, #5fd2ff);
+}
+
+.footer {
+  background: #e3e8f5;
+  color: rgba(29, 35, 51, 0.75);
+  border-top: 1px solid rgba(47, 75, 124, 0.1);
+}
+
+.footer__note {
+  color: rgba(29, 35, 51, 0.6);
+}
+
+.cert-icon {
+  background: rgba(77, 139, 255, 0.15);
+  color: #2f4b7c;
+  border: 1px solid rgba(47, 75, 124, 0.2);
+}
+
+.cert-badge {
+  background: rgba(77, 139, 255, 0.18);
+  color: #2f4b7c;
+  border-color: rgba(47, 75, 124, 0.25);
+}
+
+.timeline__item {
+  border-left-color: rgba(77, 139, 255, 0.35);
+}
+
+.timeline__item::before {
+  background: linear-gradient(135deg, #4d8bff, #65c6ff);
+}

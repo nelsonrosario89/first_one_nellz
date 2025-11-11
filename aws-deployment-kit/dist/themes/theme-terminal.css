@@ -1,0 +1,124 @@
+@import url("../styles.css");
+
+:root {
+  color-scheme: dark;
+  background-color: #020b02;
+  color: #33ff77;
+  font-family: 'Fira Code', 'Source Code Pro', monospace;
+}
+
+body {
+  background: radial-gradient(circle at center, rgba(0, 60, 0, 0.35), rgba(0, 0, 0, 0.95));
+  color: #33ff77;
+}
+
+.page-container {
+  max-width: 900px;
+}
+
+.hero {
+  background: rgba(0, 20, 0, 0.92);
+  border-bottom: 1px solid rgba(51, 255, 119, 0.2);
+  box-shadow: 0 0 30px rgba(51, 255, 119, 0.15);
+  text-transform: none;
+}
+
+.hero__eyebrow {
+  letter-spacing: 0.2em;
+  color: rgba(51, 255, 119, 0.65);
+}
+
+h1 {
+  font-family: 'Fira Code', monospace;
+  font-size: clamp(2.6rem, 4.5vw, 3.8rem);
+  text-transform: uppercase;
+}
+
+.hero__summary {
+  font-family: 'Fira Code', monospace;
+  color: rgba(51, 255, 119, 0.78);
+}
+
+.btn {
+  font-family: 'Fira Code', monospace;
+  letter-spacing: 0.08em;
+  border-radius: 0;
+  border: 1px solid rgba(51, 255, 119, 0.35);
+  background: rgba(0, 30, 0, 0.9);
+  color: #33ff77;
+}
+
+.btn.primary {
+  background: rgba(51, 255, 119, 0.15);
+  border-color: rgba(51, 255, 119, 0.45);
+}
+
+.btn:hover {
+  box-shadow: 0 0 20px rgba(51, 255, 119, 0.35);
+}
+
+.meta {
+  font-family: 'Fira Code', monospace;
+  color: rgba(51, 255, 119, 0.6);
+}
+
+.card {
+  background: rgba(0, 15, 0, 0.92);
+  border: 1px solid rgba(51, 255, 119, 0.18);
+  color: #33ff77;
+  box-shadow: 0 0 25px rgba(51, 255, 119, 0.1);
+}
+
+.card h3 {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.card li {
+  color: rgba(51, 255, 119, 0.7);
+}
+
+.tag {
+  background: rgba(51, 255, 119, 0.12);
+  border: 1px solid rgba(51, 255, 119, 0.3);
+  color: #33ff77;
+}
+
+.section--accent {
+  background: rgba(0, 10, 0, 0.95);
+  border-top: 1px solid rgba(51, 255, 119, 0.15);
+}
+
+.cta-row .btn.primary {
+  background: rgba(51, 255, 119, 0.2);
+}
+
+.footer {
+  background: rgba(0, 10, 0, 0.98);
+  border-top: 1px solid rgba(51, 255, 119, 0.2);
+  color: rgba(51, 255, 119, 0.6);
+}
+
+.footer__links a {
+  color: rgba(51, 255, 119, 0.8);
+}
+
+.cert-icon {
+  background: rgba(51, 255, 119, 0.12);
+  border: 1px solid rgba(51, 255, 119, 0.25);
+  color: #33ff77;
+}
+
+.cert-badge {
+  background: rgba(51, 255, 119, 0.1);
+  border: 1px solid rgba(51, 255, 119, 0.2);
+  color: rgba(51, 255, 119, 0.8);
+}
+
+.timeline__item {
+  border-left-color: rgba(51, 255, 119, 0.35);
+}
+
+.timeline__item::before {
+  background: rgba(51, 255, 119, 0.9);
+}
