@@ -340,7 +340,7 @@ h3 {
 .projects {
   display: grid;
   gap: 1.5rem;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 }
 
 .project header {
@@ -370,7 +370,7 @@ h3 {
 }
 
 .credentials {
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
 }
 
 /* Timeline */
@@ -416,7 +416,7 @@ h3 {
 }
 
 .education {
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
 }
 
 /* Footer */
