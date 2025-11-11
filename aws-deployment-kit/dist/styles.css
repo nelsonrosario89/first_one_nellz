@@ -216,14 +216,35 @@ h1 {
 }
 
 /* Grid utilities */
+
 .grid {
   display: grid;
   gap: 1.5rem;
   justify-items: center;
 }
 
-.skills {
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+.grid.skills,
+.projects,
+.grid.credentials,
+.grid.education {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+  scroll-snap-type: x mandatory;
+  justify-content: flex-start;
+  align-items: stretch;
+}
+
+.grid.skills::-webkit-scrollbar,
+.projects::-webkit-scrollbar,
+.grid.credentials::-webkit-scrollbar,
+.grid.education::-webkit-scrollbar {
+  display: none;
+}
+
+.grid.skills {
+  scroll-padding-left: 1rem;
 }
 
 /* Cards and project tiles */
@@ -234,6 +255,14 @@ h1 {
   padding: 1.8rem;
   box-shadow: 0 25px 45px rgba(0, 0, 0, 0.35);
   text-align: left;
+}
+
+.grid.skills .card,
+.projects .card,
+.grid.credentials .card,
+.grid.education .card {
+  flex: 0 0 clamp(280px, 85vw, 340px);
+  scroll-snap-align: start;
 }
 
 .card h3 {
