@@ -223,8 +223,6 @@ h1 {
   justify-items: center;
 }
 
-.grid.skills,
-.projects,
 .grid.credentials,
 .grid.education {
   display: flex;
@@ -236,15 +234,85 @@ h1 {
   align-items: stretch;
 }
 
-.grid.skills::-webkit-scrollbar,
-.projects::-webkit-scrollbar,
 .grid.credentials::-webkit-scrollbar,
 .grid.education::-webkit-scrollbar {
   display: none;
 }
 
-.grid.skills {
-  scroll-padding-left: 1rem;
+.marquee {
+  position: relative;
+  overflow: hidden;
+}
+
+.marquee__track {
+  display: flex;
+  gap: 1.5rem;
+  width: max-content;
+  align-items: stretch;
+}
+
+.marquee__group {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.marquee--skills .marquee__track {
+  animation: marquee-scroll-skills 38s linear infinite;
+}
+
+.marquee--projects .marquee__track {
+  animation: marquee-scroll-projects 52s linear infinite;
+}
+
+.marquee:hover .marquee__track {
+  animation-play-state: paused;
+}
+
+.marquee__track::after {
+  content: '';
+}
+
+.marquee--skills::before,
+.marquee--skills::after,
+.marquee--projects::before,
+.marquee--projects::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 4rem;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.marquee--skills::before,
+.marquee--projects::before {
+  left: 0;
+  background: linear-gradient(90deg, rgba(11, 15, 22, 0.95), transparent);
+}
+
+.marquee--skills::after,
+.marquee--projects::after {
+  right: 0;
+  background: linear-gradient(270deg, rgba(11, 15, 22, 0.95), transparent);
+}
+
+@keyframes marquee-scroll-skills {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-scroll-projects {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 /* Cards and project tiles */
@@ -257,8 +325,21 @@ h1 {
   text-align: left;
 }
 
-.grid.skills .card,
-.projects .card,
+.marquee__group .card {
+  flex: 0 0 clamp(260px, 70vw, 300px);
+  min-height: clamp(260px, 70vw, 300px);
+  display: flex;
+  flex-direction: column;
+  scroll-snap-align: start;
+}
+
+.marquee__group .card > * {
+  margin-top: 0;
+}
+
+.marquee__group .card ul {
+  margin-top: 0.75rem;
+}
 .grid.credentials .card,
 .grid.education .card {
   flex: 0 0 clamp(280px, 85vw, 340px);
