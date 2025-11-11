@@ -233,7 +233,7 @@ h1 {
   border-radius: 18px;
   padding: 1.8rem;
   box-shadow: 0 25px 45px rgba(0, 0, 0, 0.35);
-  text-align: center;
+  text-align: left;
 }
 
 .card h3 {
