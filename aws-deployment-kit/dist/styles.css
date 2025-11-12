@@ -386,9 +386,9 @@ main p {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 56px;
-  height: 56px;
-  border-radius: 10px;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
   overflow: hidden;
   background: transparent;
   border: none;
@@ -398,6 +398,7 @@ main p {
   width: 100%;
   height: 100%;
   object-fit: contain;
+  display: block;
   border-radius: inherit;
 }
 
