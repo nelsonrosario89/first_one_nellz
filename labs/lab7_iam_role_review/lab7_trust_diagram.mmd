@@ -1,0 +1,31 @@
+%% Lab 7 - IAM Role Review Trust Relationships
+%% Render with mermaid-cli (mmdc) and export as lab7_trust_diagram.png.
+
+flowchart TB
+  subgraph Mgmt["Mgmt Account 295070998992"]
+    ct["CloudTrail\n(org + multi-region)"]
+    l7["Lambda\nlab7-role-review"]
+    ar["Role\naccess-review-AccessReviewLambdaRole-..."]
+    s3["S3 evidence bucket\naws-cloudtrail-logs-295070998992-4ab61dec\ngrc-audit-evidence/lab7-*"]
+  end
+
+  subgraph Prod["Prod Account 097089567108"]
+    gh_oidc["GitHub OIDC provider\ntoken.actions.githubusercontent.com"]
+    gha["Role\nGitHubActionsComplianceAuditRole"]
+    l6["Role\nlab6_continuous_monitoring"]
+    lambda_svc["Service principal\nlambda.amazonaws.com"]
+  end
+
+  %% Trust relationships in production account
+  gh_oidc -->|"AssumeRole\nGitHub Actions"| gha
+  gh_oidc -->|"AssumeRole\nGitHub Actions (main)"| l6
+  lambda_svc -->|"AssumeRole\nLambda service"| l6
+
+  %% Monitoring pipeline in management account
+  ct -->|"Lookup AssumeRole events\n(last 14 days)"| l7
+  l7 -->|"Write CSV report"| s3
+
+  %% Roles in scope for review
+  l7 -. "Role in scope" .-> ar
+  l7 -. "Role in scope" .-> gha
+  l7 -. "Role in scope" .-> l6
