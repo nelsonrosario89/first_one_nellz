@@ -37,6 +37,13 @@ Outside the lab folders, this repo also includes standalone scripts used in earl
 | `requirements.txt` | Runtime dependencies (boto3, pandas, openpyxl, etc.). |
 | `requirements-dev.txt` | Dev‑only tools (black, flake8, isort, pytest). |
 
+## Other top‑level resources
+
+- **`aws_automated_access_review/`** – A full IAM security automation project that aggregates Security Hub, IAM Access Analyzer, and other signals, then uses Lambda and Amazon Bedrock to generate portfolio‑ready access review reports.
+- **`aws-deployment-kit/`** – Documentation, CloudFormation templates, Lambda code, and scripts that help you deploy the labs and portfolio components in a repeatable way.
+- **`securityhub_excel/`** – Small SAM application and helper code for exporting Security Hub findings into Excel (`securityhub.xlsx`) for auditor‑friendly reporting.
+- **`tests/`** – Pytest‑based tests (for example, around MFA finding schemas and `fafo_checker.py`) to validate core control logic.
+
 ## Quick start
 
 1. **Create & activate the virtual environment**:
