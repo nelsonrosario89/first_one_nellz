@@ -135,6 +135,14 @@
                 <li>Audit evidence automation & reporting</li>
               </ul>
             </div>
+            <div class="card">
+              <h3>Evidence Orchestration (Labs 7–9)</h3>
+              <ul>
+                <li>Automated IAM role review evidence (Lab 7)</li>
+                <li>Monthly ISO 27001 audit-pack ZIPs (Lab 8)</li>
+                <li>Control dashboard with evidence freshness & findings (Lab 9)</li>
+              </ul>
+            </div>
           </div>
           <div class="marquee__group" aria-hidden="true">
             <div class="card">
@@ -294,6 +302,48 @@
                 <li>Publishes executive-ready metrics to QuickSight.</li>
                 <li>Extends automation suite toward ISO 42001 alignment.</li>
               </ul>
+            </article>
+            <article class="card project">
+              <header>
+                <h3>Automated IAM Role Review (Lab 7)</h3>
+              </header>
+              <p>Scheduled Lambda that reviews AssumeRole activity for critical IAM roles and writes CSV evidence to S3.</p>
+              <ul>
+                <li>Correlates CloudTrail AssumeRole events with scoped IAM roles.</li>
+                <li>Highlights unexpected principals for investigation.</li>
+                <li>Generates timestamped CSV reports for ISO 27001 A.9.1.2.</li>
+              </ul>
+              <div class="project__links">
+                <a href="https://github.com/nelsonrosario89/first_one_nellz/tree/main/labs/lab7_iam_role_review" target="_blank" rel="noopener">Lab 7 details</a>
+              </div>
+            </article>
+            <article class="card project">
+              <header>
+                <h3>Monthly Audit Pack Generator (Lab 8)</h3>
+              </header>
+              <p>Lambda job that bundles recent evidence from Labs 1–7 into a single ZIP audit pack with ISO 27001 mapping.</p>
+              <ul>
+                <li>Scans S3 evidence prefixes for the last 30 days of artifacts.</li>
+                <li>Builds a compressed audit pack plus README_AUDIT_PACK.txt.</li>
+                <li>Speeds independent ISO 27001 reviews with one download.</li>
+              </ul>
+              <div class="project__links">
+                <a href="https://github.com/nelsonrosario89/first_one_nellz/tree/main/labs/lab8_audit_pack_generator" target="_blank" rel="noopener">Lab 8 details</a>
+              </div>
+            </article>
+            <article class="card project">
+              <header>
+                <h3>ISO 27001 Control Dashboard (Lab 9)</h3>
+              </header>
+              <p>End-to-end control dashboard that turns evidence and Security Hub findings into a single JSON + HTML view.</p>
+              <ul>
+                <li>Summarizes evidence freshness by ISO 27001 control.</li>
+                <li>Pulls active Security Hub findings by severity.</li>
+                <li>Outputs a minimal dashboard for auditors and stakeholders.</li>
+              </ul>
+              <div class="project__links">
+                <a href="https://github.com/nelsonrosario89/first_one_nellz/tree/main/labs/lab9_control_dashboard" target="_blank" rel="noopener">Lab 9 details</a>
+              </div>
             </article>
           </div>
           <div class="marquee__group" aria-hidden="true">
