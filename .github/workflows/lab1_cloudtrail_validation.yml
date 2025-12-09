@@ -1,0 +1,46 @@
+name: lab1_cloudtrail_validation
+
+on:
+  schedule:
+    - cron: "0 6 * * *"  # Daily at 06:00 UTC
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  cloudtrail-validation:
+    runs-on: ubuntu-latest
+    env:
+      AWS_REGION: us-east-1
+      EVIDENCE_BUCKET: ${{ secrets.LAB1_EVIDENCE_BUCKET }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.LAB1_AWS_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install boto3 botocore
+
+      - name: Run CloudTrail validation
+        run: |
+          python labs/lab1_cloudtrail_validation/labs/lab1_cloudtrail_validation/cloudtrail_validator.py > labs/lab1_cloudtrail_validation/out.json
+
+      - name: Upload validation summary artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: lab1-cloudtrail-validation-summary
+          path: labs/lab1_cloudtrail_validation/out.json

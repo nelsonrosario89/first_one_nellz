@@ -81,11 +81,14 @@ def _create_or_update_insight() -> str:
         return ""
 
 def _get_open_findings(insight_arn: str) -> int:
+    """Return total count by summing ResultValues[].Count from Insight results."""
     try:
         if not insight_arn:
             return 0
         resp = sh.get_insight_results(InsightArn=insight_arn)
-        return resp["InsightResults"]["TotalFindings"]
+        values = resp.get("InsightResults", {}).get("ResultValues", [])
+        total = sum(int(v.get("Count", 0)) for v in values)
+        return total
     except ClientError:
         logger.exception("get_insight_results failed for %s", insight_arn)
         return 0

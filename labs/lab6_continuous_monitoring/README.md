@@ -51,7 +51,7 @@
      - securityhub:CreateInsight
      - securityhub:UpdateInsight
      - securityhub:GetInsights
-     - securityhub:BatchGetFindings
+     - securityhub:GetInsightResults
      - cloudwatch:PutMetricData
    Resource: "*"
    ```
