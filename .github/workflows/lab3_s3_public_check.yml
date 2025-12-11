@@ -43,7 +43,7 @@ jobs:
 
       - name: Run S3 public-access check
         env:
-          EVIDENCE_BUCKET: ${{ secrets.EVIDENCE_BUCKET }}
+          EVIDENCE_BUCKET: ${{ secrets.LAB3_EVIDENCE_BUCKET }}
         run: |
           python labs/lab3_s3_public_check/s3_public_check.py \
             --region $AWS_REGION \
@@ -52,7 +52,7 @@ jobs:
       - name: Add outputs to summary
         if: success()
         env:
-          EVIDENCE_BUCKET: ${{ secrets.EVIDENCE_BUCKET }}
+          EVIDENCE_BUCKET: ${{ secrets.LAB3_EVIDENCE_BUCKET }}
           AWS_REGION: ${{ env.AWS_REGION }}
         run: |
           echo "## Outputs" >> $GITHUB_STEP_SUMMARY
