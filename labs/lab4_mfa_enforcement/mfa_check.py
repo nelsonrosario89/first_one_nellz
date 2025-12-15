@@ -23,7 +23,7 @@ import logging
 import os
 import sys
 from io import StringIO
-from typing import Dict, List, Any
+from typing import Dict, List, Any, Optional
 
 import boto3
 from botocore.exceptions import ClientError
@@ -110,7 +110,15 @@ def write_csv(rows: List[Dict[str, Any]]) -> str:
     return buf.getvalue()
 
 
-def run(region: str, evidence_bucket: str | None) -> None:
+def _sanitize_bucket_name(value: str) -> str:
+    v = value.strip()
+    if v.startswith("s3://"):
+        v = v[len("s3://") :]
+    v = v.split("/", 1)[0]
+    return v
+
+
+def run(region: str, evidence_bucket: Optional[str]) -> None:
     iam = boto3.client("iam", region_name=region)
     s3 = boto3.client("s3", region_name=region)
     sh = boto3.client("securityhub", region_name=region)
@@ -137,6 +145,8 @@ def run(region: str, evidence_bucket: str | None) -> None:
     for i in range(0, len(findings), 100):
         sh.batch_import_findings(Findings=findings[i : i + 100])
 
+    if evidence_bucket:
+        evidence_bucket = _sanitize_bucket_name(evidence_bucket)
     if evidence_bucket:
         key_prefix = "iam-mfa-audit/"
         timestamp = dt.datetime.utcnow().strftime("%Y-%m-%dT%H%M%SZ")

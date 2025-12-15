@@ -48,6 +48,28 @@ AWS-centric security engineer with 6+ years in infrastructure, audit readiness, 
 
 ## Projects
 
+### Cloud Compliance Readiness Toolkit (FastAPI GRC Backend)
+
+**Description**: I designed and built a small FastAPI backend that
+models a real GRC readiness engagement for a B2B SaaS product. The
+toolkit loads a structured control catalog  from YAML, mapping SOC 2,
+ISO/IEC 27001:2022, and PCI DSS v4.0 controls to concrete AWS
+automation labs (CloudTrail validation, S3 public‑access detection, MFA
+enforcement, etc.). On top of that catalog, the API exposes entities
+for projects, controls, labs, evidence, and remediation tasks so I can
+represent an end‑to‑end readiness workflow in code.
+
+**How it supports advisory work**: In practice, I use the API to stand
+up a project for a "SOC 2 + ISO 27001 readiness" engagement, attach lab
+outputs as evidence to specific controls, and then create remediation
+tasks with owners and statuses. For example, CloudTrail validation
+evidence backs ISO A.12.4.1 and SOC 2 CC7, S3 public‑access findings
+drive tasks to close data exposure under A.9.4.1 and PCI 7/8, and MFA
+reports drive identity hardening under CC6.1. These flows demonstrate
+that I can connect AWS telemetry to formal control requirements,
+automate evidence collection, and communicate a clear before‑and‑after
+story to clients and auditors.
+
 ### AWS Compliance Labs Automation Suite *(Ongoing)*
 
 **Description**: A series of hands-on labs that automate evidence generation for ISO 27001 controls using AWS and GitHub Actions.

@@ -42,7 +42,7 @@ jobs:
 
       - name: Run MFA enforcement check
         env:
-          EVIDENCE_BUCKET: ${{ secrets.LAB4_EVIDENCE_BUCKET }}
+          EVIDENCE_BUCKET: ${{ secrets.LAB4_EVIDENCE_BUCKET || secrets.EVIDENCE_BUCKET }}
         run: |
           python labs/lab4_mfa_enforcement/mfa_check.py \
             --region $AWS_REGION \
@@ -51,7 +51,7 @@ jobs:
       - name: Add outputs to summary
         if: success()
         env:
-          EVIDENCE_BUCKET: ${{ secrets.LAB4_EVIDENCE_BUCKET }}
+          EVIDENCE_BUCKET: ${{ secrets.LAB4_EVIDENCE_BUCKET || secrets.EVIDENCE_BUCKET }}
           AWS_REGION: ${{ env.AWS_REGION }}
         run: |
           echo "## Outputs" >> $GITHUB_STEP_SUMMARY
