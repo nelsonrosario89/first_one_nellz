@@ -33,7 +33,7 @@
           <a class="btn primary" href="mailto:nelson.rosario89@gmail.com">Email Me</a>
           <a class="btn outline" href="https://www.linkedin.com/in/nelson-rosario-16b99684" target="_blank" rel="noopener">LinkedIn</a>
           <a class="btn outline" href="https://github.com/nelsonrosario89" target="_blank" rel="noopener">GitHub</a>
-          <a class="btn outline" href="../Resume25.pdf" download>Download Resume</a>
+          <a class="btn outline" href="Nelson_Rosario_Resume_GRC.pdf" download>Download Resume</a>
         </div>
         <div class="meta">
           <span>Los Angeles, CA · Remote Ready</span>
@@ -613,7 +613,7 @@
                 <span class="cert-icon"><img src="images/AWSarchitecticon.png" alt="AWS Certified Solutions Architect Associate badge" /></span>
                 <span class="cert-text">
                   <span class="cert-title">AWS Certified Solutions Architect – Associate</span>
-                  <span class="cert-badge cert-badge--aws">AWS · 2025 target</span>
+                  <span class="cert-badge cert-badge--aws">AWS · 2026 target</span>
                 </span>
               </li>
             </ul>
@@ -718,7 +718,22 @@
       </div>
     </div>
     <p class="footer__note"> 2025 Nelson Rosario · Built with the AWS Deployment Kit</p>
+    <p class="footer__counter" style="margin-top: 0.5rem; font-size: 0.85rem; color: #888;">
+      <span id="visit-count">Loading...</span> visits
+    </p>
   </footer>
+
+  <script>
+    (async () => {
+      try {
+        const res = await fetch('https://api.counterapi.dev/v1/nelsonrosario-portfolio/visits/up');
+        const data = await res.json();
+        document.getElementById('visit-count').textContent = data.count.toLocaleString();
+      } catch (e) {
+        document.getElementById('visit-count').textContent = '—';
+      }
+    })();
+  </script>
 </div>
 </body>
 </html>
