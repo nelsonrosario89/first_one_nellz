@@ -130,22 +130,24 @@ story to clients and auditors.
 
 ---
 
-### S3 Public-Access Detector *(Planned – Lab 3)*
+### S3 Public-Access Detector *(Lab 3)*
 
-**Description**: Lambda function and Security Hub integration that scans every S3 bucket for public ACLs or bucket policies and raises findings.
+**Description**: GitHub Actions-driven S3 public-access check that scans every bucket in the **Production** account, raises **Security Hub** findings for public buckets, and writes JSON evidence to a centralized S3 bucket in the **Management/General** account.
 
 **Skills Demonstrated**:
 - Python, boto3 (`s3`, `securityhub`)
-- EventBridge scheduling
-- AWS Security Hub custom findings
+- GitHub Actions OIDC federation and IAM role design
+- Cross-account S3 evidence pattern (Prod > General evidence bucket)
 
 **Implementation Details**:
-- Runs hourly via EventBridge rule `rate(1 hour)`
-- Checks `BlockPublicAcls`, `BlockPublicPolicy`, bucket ACL grants, and policy statements
-- Creates/updates Security Hub finding with severity “High” if public access detected
+- GitHub Actions workflow `lab3_s3_public_check` runs on a schedule and on manual dispatch.
+- Uses GitHub OIDC to assume the `lab3_s3_public_check` role in **NR-TRAINING-AWS-PRODUCTION** (`097089567108`).
+- Script `s3_public_check.py` calls `s3.list_buckets()`, inspects bucket ACLs and policies for `"*"` principals, and builds a summary of public buckets.
+- Publishes findings to Security Hub in the Production account via `BatchImportFindings`.
+- Uploads JSON summaries to the centralized evidence bucket `aws-cloudtrail-logs-295070998992-4ab61dec` in **NR-TRAINING-AWS-GENERAL**, under the prefix `s3-public-audit/summary-<timestamp>.json`.
 
 **Results**:
-- Early-warning system for accidental public buckets; prevents data-exposure incidents.
+- Automated, cross-account detection of public S3 buckets with evidence stored in a single management-account bucket for audits.
 
 ---
 
