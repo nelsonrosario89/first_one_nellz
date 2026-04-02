@@ -28,7 +28,8 @@ from typing import Dict, List
 # Import the `boto3` module, the official AWS SDK for Python (Boto3)
 import boto3                        
 # Import the `ClientError` exception from the `botocore.exceptions` module, the base exception for AWS service errors
-from botocore.exceptions import ClientError  
+from botocore.config import Config as BotoConfig
+from botocore.exceptions import ClientError, BotoCoreError  
 
 # We could configure Python's `logging` module; for this lightweight Lambda we
 # simply use `print(json.dumps(…))`.  Creating a CloudWatch Logs client anyway
@@ -46,7 +47,8 @@ REGIONS = boto3.session.Session().get_available_regions("ec2")
 def list_instances(region: str) -> List[Dict]:
     """Return a *flat* list of instance dictionaries for a single region."""
     # Create a regional EC2 client
-    ec2 = boto3.client("ec2", region_name=region)             
+    ec2 = boto3.client("ec2", region_name=region,
+                        config=BotoConfig(connect_timeout=10, read_timeout=10, retries={"max_attempts": 1}))             
     # Create a paginator for the `describe_instances` method to handle >1k instances
     paginator = ec2.get_paginator("describe_instances")        
     # Initialize an empty list to accumulate results
@@ -124,6 +126,9 @@ def gather_inventory(scope_tag: str) -> List[Dict]:
         except ClientError as err:                              
             # Handle AWS service errors
             print(f"{region}: {err.response['Error']['Code']} – skipping region")
+        except BotoCoreError as err:
+            # Handle connection timeouts, endpoint errors, etc.
+            print(f"{region}: {type(err).__name__} – skipping region")
 
     # Return the master inventory list
     return inventory
